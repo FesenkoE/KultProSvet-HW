@@ -1,4 +1,4 @@
-# books_api
+# book_store
 
 ## Project setup
 ```

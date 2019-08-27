@@ -10,8 +10,8 @@ export default new Vuex.Store({
     },
     mutations: {
         initBooks(state, payload) {
-            state.books.push(...payload)
-        }
+            state.books.push(...payload);
+        },
     },
     actions: {
         initBooks({commit}) {
@@ -19,8 +19,7 @@ export default new Vuex.Store({
                 method: 'GET'
             })
                 .then(response => response.json())
-                .then(json => console.log(json))
-                // .then(json => commit('initBooks', json))
+                .then(result => commit('initBooks', result.items))
         }
     }
 })

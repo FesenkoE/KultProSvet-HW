@@ -3,16 +3,19 @@
         <div class="row">
             <div class="col-md-6">
                 <input type="text" class="form-control" placeholder="Search book">
-                {{ $store.state }}
+<!--                {{ $store.state }}-->
             </div>
             <div class="col-md-2">
                 <button
                         class="btn btn-primary btn-block"
-                        @click="initBooks">Send
+                        @click="addBooks">Send
                 </button>
             </div>
             <div class="col-md-2"></div>
             <div class="col-md-2"><i class="fas fa-shopping-cart"></i></div>
+        </div>
+        <div v-for="(book, index) in $store.state.books">
+            <div>{{ book }}</div>
         </div>
     </div>
 </template>
@@ -21,7 +24,7 @@
     export default {
         name: "Search",
         methods: {
-            initBooks() {
+            addBooks() {
                 this.$store.dispatch('initBooks');
             }
         }

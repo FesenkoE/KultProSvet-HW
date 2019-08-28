@@ -3,34 +3,32 @@
         <div class="row">
             <div class="col-md-6">
                 <input type="text" class="form-control" placeholder="Search book">
-<!--                {{ $store.state }}-->
             </div>
             <div class="col-md-2">
                 <button
                         class="btn btn-primary btn-block"
-                        @click="addBooks">Send
+                        @click="initBooks">Send
                 </button>
             </div>
             <div class="col-md-2"></div>
             <div class="col-md-2"><i class="fas fa-shopping-cart"></i></div>
         </div>
-        <div v-for="(book, index) in $store.state.books">
-            <div>{{ book }}</div>
-        </div>
+        <div v-for="(book, index) in $store.state.books"
+            :book = "book.volumInfo"></div>
+<!--            <div><img :src="book.volumeInfo.imageLinks.smallThumbnail" class="mb-5" style="border: 1px solid gray">-->
+
     </div>
+<!--    </div>-->
 </template>
 
 <script>
+    import {mapActions} from 'vuex';
+
     export default {
         name: "Search",
-        methods: {
-            addBooks() {
-                this.$store.dispatch('initBooks');
-            }
-        }
+        methods:
+            mapActions([
+                'initBooks'
+            ])
     }
 </script>
-
-<style scoped>
-
-</style>

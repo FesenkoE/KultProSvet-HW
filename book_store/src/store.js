@@ -14,8 +14,8 @@ export default new Vuex.Store({
         },
     },
     actions: {
-        initBooks({commit}) {
-            fetch('https://www.googleapis.com/books/v1/volumes?q=javascript/', {
+        initBooks({commit}, value) {
+            fetch(`https://www.googleapis.com/books/v1/volumes?q=${value}/`, {
                 method: 'GET'
             })
                 .then(response => response.json())

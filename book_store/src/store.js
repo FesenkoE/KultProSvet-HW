@@ -5,8 +5,8 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
+        title: 'Book Store',
         books: [],
-        title: 'Book Store'
     },
     mutations: {
         initBooks(state, payload) {

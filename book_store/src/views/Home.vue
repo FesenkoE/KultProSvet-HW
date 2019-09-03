@@ -1,7 +1,9 @@
 <template>
     <div>
         <Search/>
-        <Book/>
+        <div class="book-shelf">
+            <Book/>
+        </div>
     </div>
 </template>
 

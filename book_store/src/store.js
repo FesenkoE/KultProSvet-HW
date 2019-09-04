@@ -7,6 +7,7 @@ export default new Vuex.Store({
     state: {
         title: 'Book Store',
         books: [],
+        orderBook: {},
     },
     mutations: {
         initBooks(state, payload) {
@@ -20,6 +21,9 @@ export default new Vuex.Store({
             })
                 .then(response => response.json())
                 .then(result => commit('initBooks', result.items))
+        },
+        orderBook({commit}, id) {
+            console.log(id);
         }
     }
 })

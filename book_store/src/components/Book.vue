@@ -11,8 +11,16 @@
                             <img :src="book.volumeInfo.imageLinks.smallThumbnail">
                         </div>
                         <div class="book-description">
-                            Author: {{ book.volumeInfo.authors[0] }}
+                            <p v-if="book.volumeInfo.authors">Author: {{ book.volumeInfo.authors[0] }}</p>
+                            <p v-if="book.volumeInfo.publishedDate">Published: {{ book.volumeInfo.publishedDate | newFormat}}</p>
                         </div>
+                    </div>
+                    <div class="btn-order">
+                        <button class="btn btn-success btn-block"
+                                data-toggle="modal"
+                                data-target="#exampleModalCenter"
+                                @click="orderBook(book.id)"
+                                :bookId="bookId">Buy</button>
                     </div>
                 </div>
             </div>
@@ -21,24 +29,43 @@
 </template>
 
 <script>
+    import {mapActions} from 'vuex';
+
     export default {
-        name: "Book"
+        name: "Book",
+        props: ['bookId'],
+        filters: {
+            newFormat(date) {
+                let newDate = new Date(date);
+                let day = newDate.getDate();
+                day = (day < 10) ? '0' + day : day;
+                let month = newDate.getMonth();
+                month = (month < 10) ? '0' + month : month;
+                let year = newDate.getFullYear();
+                return `${day}.${month}.${year}`;
+            }
+        },
+        methods:
+            mapActions([
+                'orderBook'
+            ]),
     }
 </script>
 
 <style scoped>
     .book-card {
-        height: 500px;
-        width: 450px;
+        /*height: 450px;*/
+        width: 260px;
         box-shadow: 0 0 10px 0 #cccccc;
         border-radius: 4px;
-        padding: 0 15px;
+        padding: 10px 15px;
     }
 
     .book-body {
-        display: flex;
+        /*display: flex;*/
         margin-top: 25px;
         justify-content: space-between;
+        height: 290px;
     }
 
     .book-title {
@@ -56,11 +83,15 @@
     }
 
     .book-card  img {
-        width: 170px;
-        height: 250px;
+        width: 150px;
+        height: 200px;
     }
     
     .book-description {
-        flex: 1;
+        margin-top: 15px;
+    }
+
+    .book-description p {
+        margin-bottom: 5px;
     }
 </style>

@@ -24,8 +24,7 @@
     import {mapActions} from 'vuex';
 
     export default {
-        name: "Search",
-        props: ['searchParam'],
+        name: "Search", 
         methods:
             mapActions([
                 'initBooks'

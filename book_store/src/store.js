@@ -23,7 +23,7 @@ export default new Vuex.Store({
                 .then(result => commit('initBooks', result.items))
         },
         orderBook({commit}, id) {
-            console.log(id);
+            console.log(this.state.books[0]);
         }
     }
 })

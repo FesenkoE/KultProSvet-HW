@@ -54,7 +54,6 @@
 
 <style scoped>
     .book-card {
-        /*height: 450px;*/
         width: 260px;
         box-shadow: 0 0 10px 0 #cccccc;
         border-radius: 4px;
@@ -62,7 +61,6 @@
     }
 
     .book-body {
-        /*display: flex;*/
         margin-top: 25px;
         justify-content: space-between;
         height: 290px;

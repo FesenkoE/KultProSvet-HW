@@ -7,9 +7,6 @@
             <div class="order-book__body__description">
                 <p>{{ $store.state.orderedBook.volumeInfo.description }}</p>
             </div>
-            <div class="order-book__body__description">
-
-            </div>
         </div>
 
         <form>
@@ -58,9 +55,7 @@
             }
         },
         action: {
-            checkForm() {
-               alert('success');
-            }
+
         }
     }
 </script>

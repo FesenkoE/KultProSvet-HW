@@ -7,12 +7,23 @@ export default new Vuex.Store({
     state: {
         title: 'Book Store',
         books: [],
-        orderBook: {},
+        orderedBook: [],
     },
     mutations: {
         initBooks(state, payload) {
             state.books.push(...payload);
         },
+        emptyOrderedBook(state) {
+            state.orderedBook = {}
+        },
+        initOrderBook(state, id) {
+            state.books.forEach(function (element) {
+                if (element.id === id) {
+                    state.orderedBook = element;
+                    console.log(state.orderedBook);
+                }
+            });
+        }
     },
     actions: {
         initBooks({commit}, value) {
@@ -23,7 +34,8 @@ export default new Vuex.Store({
                 .then(result => commit('initBooks', result.items))
         },
         orderBook({commit}, id) {
-            console.log(id);
+            commit('emptyOrderedBook');
+            commit('initOrderBook', id);
         }
     }
 })

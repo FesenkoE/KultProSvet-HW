@@ -8,6 +8,7 @@ export default new Vuex.Store({
         title: 'Book Store',
         books: [],
         orderedBook: [],
+        openModal: true,
     },
     mutations: {
         initBooks(state, payload) {
@@ -20,10 +21,9 @@ export default new Vuex.Store({
             state.books.forEach(function (element) {
                 if (element.id === id) {
                     state.orderedBook = element;
-                    console.log(state.orderedBook);
                 }
             });
-        }
+        },
     },
     actions: {
         initBooks({commit}, value) {
